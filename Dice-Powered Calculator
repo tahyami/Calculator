@@ -1,0 +1,55 @@
+import random
+import sympy as sp
+def dice_game():
+    roll = random.randint(1, 6)
+    print("You rolled", roll)
+    return roll
+def basic_calculator():
+    while True:
+        operation = input("Enter operation (+, -, *, /) or 'exit' to quit: ")
+        if operation == 'exit':
+            break
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+        if operation == '+':
+            print("Result:", num1 + num2)
+        elif operation == '-':
+            print("Result:", num1 - num2)
+        elif operation == '*':
+            print("Result:", num1 * num2)
+        elif operation == '/':
+            if num2 != 0:
+                print("Result:", num1 / num2)
+            else:
+                print("Cannot divide by zero")
+def calculus_operations():
+    print("Choose: 1 for Derivative, 2 for Integral")
+    choice = input()
+    equation = input("Enter equation in terms of x: ")
+    x = sp.symbols('x')
+    expr = sp.sympify(equation)
+    if choice == '1':
+        derivative = sp.diff(expr, x)
+        print("Derivative:", derivative)
+    elif choice == '2':
+        integral = sp.integrate(expr, x)
+        print("Integral:", integral)
+def main_program():
+    tries = 0
+    while True:
+        play_game = input("Roll the dice? yes or no: ")
+        if play_game == 'yes':
+            tries += dice_game()
+            print("Tries:", tries)
+        else:
+            break
+    while tries > 0:
+        print("1 for Basic Calculator, 2 for Calculus")
+        choice = input()
+        if choice == '1':
+            basic_calculator()
+        elif choice == '2':
+            calculus_operations()
+        tries -= 1
+        print("Tries left:", tries)
+main_program()
