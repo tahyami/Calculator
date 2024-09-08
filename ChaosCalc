@@ -1,0 +1,36 @@
+name = input("Your name? ")
+age = int(input("Your age? "))
+fav_num = int(input("Favorite number? "))
+import numpy as np
+arr = np.random.randint(1, 100, 10)
+mean = np.mean(arr)
+median = np.median(arr)
+std_dev = np.std(arr)
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit([[age]], [[fav_num]])
+predicted = model.predict([[age]])
+import statistics
+corr_coeff = statistics.correlation([age], [fav_num])
+if age < 18:
+    print("uh you're...a minor?")
+elif age == 21:
+    print("wow 21 huh congrats or whatever")
+else:
+    print("you're grown")
+import sympy
+prime_nums = []
+for i in range(2, 101):
+    if sympy.isprime(i):
+        prime_nums.append(i)
+import matplotlib.pyplot as plt
+plt.plot([age], [fav_num], 'ro')
+plt.xlabel('Age I guess')
+plt.ylabel('Fav num if you say so')
+plt.title('I guess this is your Age vs. Favorite Number')
+plt.show()
+print("ok so here's your random array:", arr)
+print("I mean, the mean is:", mean, "and the median is:", median, "and whatever the standard deviation is:", std_dev)
+print("Apparently this is the predicted number for your age:", predicted)
+print("Do you even care about the correlation coefficient? Well, here it is:", corr_coeff)
+print("And oh, prime numbers up to 100 because why not:", prime_nums)
